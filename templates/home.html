@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block body %}
+<div class="jumbotron">
+    <div align="center">
+                 <form method="POST" action="{{ url_for('unlock') }}" enctype="multipart/form-data">
+                    {% for field in unlock_form %}
+                    {% if field.type == "HiddenField" or field.name == "csrf_token" %}
+                        {{ field }}
+                    {% else %}
+                        {{ render_field(field) }}
+                    {% endif %}
+                    {% endfor %}
+                    <button class="btn btn-lg btn-warning" id="big-btn" type="submit">
+                        Unlock Front Door
+                    </button>
+                </form>
+    </div>
+</div>
+{% endblock %}
