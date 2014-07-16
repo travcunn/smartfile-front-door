@@ -128,6 +128,7 @@ def create_account():
                 flash("Password was shorter than 6 characters.", "warning")
                 return redirect(url_for('auth.create_account'))
             user.set_password(edit_form.password.data)
+            db.session.add(user)
             db.session.commit()
             flash("User added successfully.", "info")
         else:
