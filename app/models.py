@@ -1,3 +1,5 @@
+import os
+
 from sqlalchemy.orm import deferred
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -11,9 +13,11 @@ class User(db.Model):
     last_name = db.Column(db.String(72))
     username = db.Column(db.String(80), unique=True)
     __password = deferred(db.Column(db.String(96)))
+    api_key = db.Column(db.String(32), unique=True)
 
     def __init__(self, username):
         self.username = username
+        self.api_key = os.urandom(32).encode('hex')
 
     def is_authenticated(self):
         return True

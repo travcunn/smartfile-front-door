@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
-{% block title %}Account Manager - SmartFile Office Automation{% endblock %}
+{% block title %}API Key - SmartFile Office Automation{% endblock %}
 
 {% block css %}
 {% endblock %}
 
 {% block jsbottom %}
-
 <script>
 $('#loginUsername').focus();
 </script>
@@ -13,12 +12,10 @@ $('#loginUsername').focus();
 
 
 {% block body %}
-
-
 <div class="modal-dialog">
 <div class="modal-content">
     <div class="modal-header">
-    <h1 class="text-center">Account Manager</h1>
+    <h1 class="text-center">API Key</h1>
     </div>
     <div class="modal-body">
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -44,48 +41,38 @@ $('#loginUsername').focus();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="navbar-brand">Actions</div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('auth.accounts')}}">back</a></li>
+      </ul>
+
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ url_for('auth.api_key') }}"><span class="glyphicon glyphicon-asterisk"></span></a></li>
-          <li><a href="{{ url_for('auth.create_account') }}"><span class="glyphicon glyphicon-plus"></span></a></li>
+         <form class="form" action="{{ url_for('auth.api_key') }}" method="post">
+            {{ form.hidden_tag() }}
+            <button class="btn btn-success btn-sm" type="submit">Regenerate</button>
+        </form>
       </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
     </nav>
 
-    <table class="table table-hover table-condensed">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for user in users %}
-      <tr class="clickableRow" href="{{ url_for('auth.view_account', user_id=user.id) }}">
-            <td>{{ user.id }}</td>
-            <td>{{ user.first_name }}</td>
-            <td>{{ user.last_name }}</td>
-            <td>{{ user.username }}</td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
+    <div class="col-xs-12 well">
+        <p><small>{{ user.api_key }}</small></p>
+    </div>
 
-    <script>
-    jQuery(document).ready(function($) {
-      $(".clickableRow").click(function() {
-            window.document.location = $(this).attr("href");
-      });
-    });
-    </script>
-
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Available Endpoints</h3>
+        </div>
+        <div class="col-xs-12">
+            <kbd>POST /api/door/unlock</kbd>
+            <div class="well">
+                Unlocks the front door
+            </div>
+        </div>
     </div>
 </div>
 </div>

@@ -19,3 +19,7 @@ class CreateUserForm(Form):
     last_name = TextField('Last Name', validators=[DataRequired()])
     username = TextField('Username', validators=[DataRequired()])
     password = PasswordField('Password')
+
+
+class ResetApiKeyForm(Form):
+    pass
