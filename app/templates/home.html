@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}SmartFile Office Automation{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block jsbottom %}
+
+<script>
+$('#loginUsername').focus();
+</script>
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+    <h1 class="text-center">SmartFile Office Automation</h1>
+    </div>
+    <div class="modal-body">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="top-error">
+        {% for category, message in messages %}
+        <div class="alert alert-dismissable alert{% if category != 'message'%}-{{ category }}{% endif %}{% if category == 'message' %}-warning{% endif %}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="top-error-text">{{ message }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div align="center">
+        <form method="POST" action="{{ url_for('home.unlock') }}" enctype="multipart/form-data">
+        {% for field in unlock_form %}
+        {% if field.type == "HiddenField" or field.name == "csrf_token" %}
+            {{ field }}
+        {% else %}
+            {{ render_field(field) }}
+        {% endif %}
+        {% endfor %}
+        <button class="btn btn-lg btn-success" id="big-btn" type="submit">
+        Unlock Front Door
+        </button>
+        </form>
+    </div>
+
+    </div>
+
+    <div class="modal-footer" style="text-align: center;">
+        <a href="{{ url_for('auth.accounts') }}">Manage Users</a>
+    </div>
+
+</div>
+</div>
+
+{% endblock %}

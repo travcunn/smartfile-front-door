@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootswatch.min.css" rel="stylesheet">
+    <link href="/static/css/application.css" rel="stylesheet">
+    <script src="/static/js/jquery-1.8.3.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    {% block css %}{% endblock %}
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv/html5shiv.js"></script>
+      <script src="/static/js/respond/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+{% block errormessages %}{% endblock %}
+{% block body %}{% endblock %}
+{% block jsbottom %}{% endblock %}
+</body>
+</html>

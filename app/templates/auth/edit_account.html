@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block title %}Account Manager - SmartFile Office Automation{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block jsbottom %}
+
+<script>
+$('#loginUsername').focus();
+</script>
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+    <h1 class="text-center">Edit Account</h1>
+    </div>
+    <div class="modal-body">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="top-error">
+        {% for category, message in messages %}
+        <div class="alert alert-dismissable alert{% if category != 'message'%}-{{ category }}{% endif %}{% if category == 'message' %}-warning{% endif %}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="top-error-text">{{ message }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('auth.accounts')}}">back</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    </nav>
+
+  <form class="form-horizontal" role="form" action="{{ url_for('auth.edit_account', user_id=user.id) }}" method="POST">
+{{ edit_form.hidden_tag() }}
+  <div class="form-group">
+    <label for="firstname" class="col-sm-2 control-label"><strong>First name</strong></label>
+    <div class="col-sm-10">
+        {{ edit_form.first_name(value=user.first_name, class="form-control", placeholder="First name") }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastname" class="col-sm-2 control-label"><strong>Last name</strong></label>
+    <div class="col-sm-10">
+        {{ edit_form.last_name(value=user.last_name, class="form-control", placeholder="Last name") }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="username" class="col-sm-2 control-label"><strong>Username</strong></label>
+    <div class="col-sm-10">
+        {{ edit_form.username(value=user.username, class="form-control", placeholder="Username") }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label"><strong>Password</strong></label>
+    <div class="col-sm-10">
+        {{ edit_form.password(value="", class="form-control", placeholder="Password") }}
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">Save</button>
+</form>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
