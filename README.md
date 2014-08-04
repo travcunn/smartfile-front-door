@@ -6,6 +6,11 @@ When moving offices, we found a button that could unlock the front door. However
 #####Solution
 Using a relay, we can complete the door unlock circuit, just as the button did.
 
+#####Alternative Uses
+Do you have a pesky intern that you don't feel like letting in the office today?
+
+Just delete their user account from the database!
+
 
 features
 ========
