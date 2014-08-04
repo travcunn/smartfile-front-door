@@ -16,3 +16,4 @@ Just delete their user account from the database!
 - arduino relay shield v1.0 (http://www.seeedstudio.com/wiki/Relay_Shield_V1.0)
 
 ###screenshot
+![Alt text](/misc/screenshot.png?raw=true "Optional Title")
