@@ -58,4 +58,20 @@ $('#loginUsername').focus();
 </div>
 </div>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
+<script>
+if (annyang) {
+  // Let's define a command.
+  var commands = {
+    'open the door': function() { $( "button:first" ).trigger( "click" ); }
+  };
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening.
+  annyang.start();
+}
+</script>
+
 {% endblock %}

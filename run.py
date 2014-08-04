@@ -9,4 +9,4 @@ from app import app
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 #toolbar = DebugToolbarExtension(app)
 
-app.run(host='0.0.0.0', port=8000, debug=False)
+app.run(host='0.0.0.0', port=8001, debug=True)
