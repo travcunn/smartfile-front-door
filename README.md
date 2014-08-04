@@ -9,6 +9,7 @@ Using a relay, we can complete the door unlock circuit, just as the button did.
 
 features
 ========
+- one large button for unlocking that door!
 - user account manager
 - unlock the door using voice control in Google Chrome
 
