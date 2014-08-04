@@ -1,7 +1,7 @@
 smartfile front door
 ====================
 #####Problem
-When moving offices, we found a button that could unlock the front door. However, there was only 1 button and it was mounted at an inconvenient spot in the office. Whenever there were visitors, someone would have to get up and press the button.
+When moving offices, we found a button that could unlock the front door. However, there was only 1 button and it was mounted at an inconvenient spot in the office. Whenever there were visitors, someone would have to get up and press the button or just open the door.
 
 #####Solution
 Using a relay, we can complete the door unlock circuit, just as the button did.
