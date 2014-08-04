@@ -8,7 +8,7 @@ from door import Door
 
 app = Flask(__name__)
 app.config.from_object('app.config')
-app.debug = True
+app.debug = False
 
 login_manager = LoginManager(app)
 login_manager.session_protection = "strong"
